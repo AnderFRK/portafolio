@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX, FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiMenu, FiX, FiGithub, FiLinkedin, FiCode } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +12,26 @@ const Navbar = () => {
     { name: "Contacto", href: "#contact" },
   ];
 
+  // --- FUNCIÓN NUEVA: Maneja el scroll suave manual ---
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault(); // 1. Evita el salto brusco instantáneo
+    
+    const element = document.querySelector(targetId);
+    if (element) {
+      const headerOffset = 80; // 2. Espacio para que el menú no tape el título (ajusta si quieres más/menos)
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth" // 3. Aquí forzamos la animación suave
+      });
+    }
+
+    setIsOpen(false); // 4. Cerramos el menú móvil si estaba abierto
+  };
+  // ----------------------------------------------------
+
   return (
     <>
       <nav className="fixed top-0 w-full z-50 bg-slate-950/50 backdrop-blur-lg border-b border-slate-800">
@@ -19,9 +39,13 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             
             {/* LOGO */}
-            <div className="flex-shrink-0 cursor-pointer">
+            <div 
+              className="flex-shrink-0 cursor-pointer flex items-center gap-2"
+              onClick={(e) => handleNavClick(e, "#home")} // Truco: Clic en el logo te lleva arriba suavemente
+            >
+              <FiCode className="text-cyan-400 text-3xl" /> 
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent bg-clip-text">
-                Frank Anderson
+                Ander Dev
               </span>
             </div>
 
@@ -32,7 +56,9 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-slate-300 hover:text-cyan-400 hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium"
+                    // AGREGAMOS EL EVENTO ONCLICK AQUÍ
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="text-slate-300 hover:text-cyan-400 hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                   >
                     {link.name}
                   </a>
@@ -58,7 +84,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* MOBILE MENU (Framer Motion) */}
+        {/* MOBILE MENU */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -72,8 +98,9 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium"
+                    // AGREGAMOS EL EVENTO ONCLICK AQUÍ TAMBIÉN
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                   >
                     {link.name}
                   </a>

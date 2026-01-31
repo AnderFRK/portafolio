@@ -1,18 +1,17 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import profileImg from "../../assets/images/profile/perfil.png"; // <--- CAMBIA ESTO si tu foto se llama diferente
+import { MdVerified } from "react-icons/md"; // <--- 1. IMPORT NUEVO
+import profileImg from "../../assets/images/profile/perfil.png";
 
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 overflow-hidden relative">
       
-      {/* Fondo con efecto de luz (Glow) */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12">
         
-        {/* Columna Izquierda: Texto */}
         <div className="flex-1 text-center md:text-left z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -20,13 +19,16 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-cyan-400 font-medium tracking-wide mb-4">
-              HOLA, MI NOMBRE ES
+              MI NOMBRE ES
             </h2>
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-100 mb-6 tracking-tight">
-              Frank Anderson <span className="text-slate-600">.</span>
+            
+            {/* --- AQUÍ ESTÁ EL CAMBIO PRINCIPAL --- */}
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-100 mb-6 tracking-tight flex items-center gap-3 justify-center md:justify-start">
+              Frank Anderson 
+              <MdVerified className="text-cyan-400 text-4xl md:text-6xl" /> 
             </h1>
             <h3 className="text-3xl md:text-4xl font-bold text-slate-400 mb-6">
-              Desarrollador de Software Versátil
+              Desarrollador de Software Freelance
             </h3>
             <p className="text-slate-400 text-lg max-w-lg mx-auto md:mx-0 mb-8 leading-relaxed">
                 Desarrollador de software egresado, apasionado por transformar ideas en
