@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX, FiGithub, FiLinkedin, FiCode } from "react-icons/fi";
+import { FiMenu, FiX, FiGithub, FiLinkedin, FiCode, FiDownload } from "react-icons/fi";
+import cvFile from "../assets/images/cv/CVFrankSumari.pdf";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,25 +13,17 @@ const Navbar = () => {
     { name: "Contacto", href: "#contact" },
   ];
 
-  // --- FUNCIÓN NUEVA: Maneja el scroll suave manual ---
   const handleNavClick = (e, targetId) => {
-    e.preventDefault(); // 1. Evita el salto brusco instantáneo
-    
+    e.preventDefault();
     const element = document.querySelector(targetId);
     if (element) {
-      const headerOffset = 80; // 2. Espacio para que el menú no tape el título (ajusta si quieres más/menos)
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth" // 3. Aquí forzamos la animación suave
-      });
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
-
-    setIsOpen(false); // 4. Cerramos el menú móvil si estaba abierto
+    setIsOpen(false);
   };
-  // ----------------------------------------------------
 
   return (
     <>
@@ -38,10 +31,9 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             
-            {/* LOGO */}
             <div 
               className="flex-shrink-0 cursor-pointer flex items-center gap-2"
-              onClick={(e) => handleNavClick(e, "#home")} // Truco: Clic en el logo te lleva arriba suavemente
+              onClick={(e) => handleNavClick(e, "#home")}
             >
               <FiCode className="text-cyan-400 text-3xl" /> 
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 text-transparent bg-clip-text">
@@ -49,30 +41,35 @@ const Navbar = () => {
               </span>
             </div>
 
-            {/* DESKTOP MENU */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
+              <div className="ml-10 flex items-center space-x-8">
                 {links.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    // AGREGAMOS EL EVENTO ONCLICK AQUÍ
                     onClick={(e) => handleNavClick(e, link.href)}
                     className="text-slate-300 hover:text-cyan-400 hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                   >
                     {link.name}
                   </a>
                 ))}
+
+                <a 
+                  href={cvFile} 
+                  download="CV_Frank_Sumari.pdf"
+                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 rounded-lg transition-all hover:scale-105 font-medium text-sm"
+                >
+                  <FiDownload />
+                  <span>CV</span>
+                </a>
               </div>
             </div>
 
-            {/* REDES SOCIALES (Desktop) */}
-            <div className="hidden md:flex gap-4">
+            <div className="hidden md:flex gap-4 ml-4">
               <a href="https://github.com/AnderFRK" target="_blank" className="text-slate-300 hover:text-white transition-colors"><FiGithub size={20}/></a>
               <a href="https://pe.linkedin.com/in/frank-sumari" target="_blank" className="text-slate-300 hover:text-white transition-colors"><FiLinkedin size={20}/></a>
             </div>
 
-            {/* MOBILE MENU BUTTON */}
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -84,7 +81,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -98,13 +94,20 @@ const Navbar = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    // AGREGAMOS EL EVENTO ONCLICK AQUÍ TAMBIÉN
                     onClick={(e) => handleNavClick(e, link.href)}
                     className="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                   >
                     {link.name}
                   </a>
                 ))}
+                
+                <a 
+                  href={cvFile}
+                  download="CV_Frank_Sumari.pdf"
+                  className="flex items-center gap-2 text-cyan-400 font-bold block px-3 py-2 rounded-md text-base"
+                >
+                  <FiDownload /> Descargar CV
+                </a>
               </div>
             </motion.div>
           )}
