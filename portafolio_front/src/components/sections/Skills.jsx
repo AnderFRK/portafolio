@@ -4,7 +4,7 @@ import {
   SiLua, SiMysql, SiSqlite, SiMongodb, SiExpress, 
   SiNodedotjs, SiPython, SiAmazons3, SiAwslambda,
   SiHtml5, SiJquery, SiJavascript, SiPandas, SiNumpy, 
-  SiTensorflow, SiGit, SiGithub 
+  SiTensorflow, SiGit, SiGithub, SiSupabase
 } from "react-icons/si";
 import { FaJava, FaAws } from "react-icons/fa"; 
 
@@ -52,6 +52,7 @@ const Skills = () => {
         { name: "Git", icon: <SiGit className="text-orange-600" /> },
         { name: "GitHub", icon: <SiGithub className="text-white" /> },
         { name: "SQLite", icon: <SiSqlite className="text-sky-300" /> },
+        { name: "Supabase", icon: <SiSupabase className="text-emerald-500" /> },
       ]
     }
   ];

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { projects } from "../../data/projects.jsx"; // Importamos los datos
+import { projects } from "../../data/projects.jsx";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 const Projects = () => {

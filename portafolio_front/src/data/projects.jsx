@@ -1,4 +1,4 @@
-import { FiGithub, FiExternalLink, FiLock, FiCloud } from "react-icons/fi";
+import { FiGithub, FiExternalLink, FiLock, FiCloud, FiShare2} from "react-icons/fi";
 import { BsFiletypeXml } from "react-icons/bs";
 import {
   SiReact,
@@ -18,13 +18,17 @@ import {
   SiOracle,
   SiSqlite,
   SiLaravel,
-  SiAndroidstudio
+  SiAndroidstudio,
+  SiSupabase,
+  SiWebrtc,
+  SiTensorflow
 } from "react-icons/si";
 
 import foroImg from "../assets/images/projects/foroejem.png";
 import infouniImg from "../assets/images/projects/infouni.png";
 import catalogoImg from "../assets/images/projects/catalogo.png";
 import androidImg from "../assets/images/projects/app.png";
+import p2pImg from "../assets/images/projects/p2paesf.png";
 
 export const projects = [
   {
@@ -44,6 +48,21 @@ export const projects = [
   },
   {
     id: 2,
+    title: "Plataforma de chat de voz y mensajes peer to peer (Alpha)",
+    description: "Aplicación web de chat de voz y mensajes peer to peer desarrollada con tecnologías de supabase y PeerJS .",
+    tech: [
+      { name: "React", icon: <SiReact className="text-cyan-400" /> },
+      { name: "Tailwind", icon: <SiTailwindcss className="text-teal-400" /> },
+      { name: "Supabase", icon: <SiSupabase className="text-emerald-500" /> },
+      { name: "WebRTC", icon: <SiWebrtc className="text-blue-400" /> },
+      { name: "PeerJS", icon: <FiShare2 className="text-purple-400" /> },
+    ],
+    github: "https://github.com/AnderFRK/aesf_p2p",
+    demo: "https://aesf-p2p.vercel.app/",
+    image: p2pImg,
+  },
+  {
+    id: 3,
     title: "Foro Imageboard AESF (En Desarrollo)",
     description: "Foro tipo imageboard. Permite a los usuarios publicar imágenes y comentarios de forma anónima. Desarrollado con el stack MERN.",
     tech: [
@@ -58,7 +77,7 @@ export const projects = [
     image: foroImg,
   },
   {
-    id: 3,
+    id: 4,
     title: "Catálogo Virtual Dinámico con AppSheet",
     description: "Aplicación web que agrega productos de forma dinámica utilizando AppSheet. Ideal para pequeñas empresas que desean un catálogo en línea sin complicaciones.",
     tech: [
@@ -70,7 +89,7 @@ export const projects = [
     image: catalogoImg,
   },
   {
-    id: 4,
+    id: 5,
     title: "Aplicación de Gestión de Inventario, Venta y Compras",
     description: "Aplicación nativa Android desarrollada en Java. Utiliza SQLite para almacenamiento local y exportación de bases de datos.",
     tech: [
@@ -83,7 +102,7 @@ export const projects = [
     demo: null,
     image: androidImg,
   },
-  {
+  /*{
     id: 5,
     title: "Proyecto de AWS de Instituto",
     description: "Proyecto básico de AWS para conocer sus funcionalidades serverless y de gestión de usuarios.",
@@ -102,7 +121,7 @@ export const projects = [
     github: "https://github.com/AnderFRK/ProyectoEjemplo5",
     demo: null,
     image: "https://via.placeholder.com/600x400/0f172a/38bdf8?text=Proyecto+AWS",
-  },
+  },*/
   {
     id: 6,
     title: "CRM para Gestión de Clientes (No Disponible)",
@@ -116,5 +135,17 @@ export const projects = [
     github: null,
     demo: null,
     image: "https://via.placeholder.com/600x400/0f172a/38bdf8?text=CRM+Privado",
+  },
+  {
+    id: 7, title: "CRUD Dashboard para Gestion de Ventas, Compras e Inventario",
+    description: "Página para gestionar ventas, compras e inventario. Desarrollada con React, Vite y Tailwind CSS. El proyecto es un CRUD básico sin funcionalidades avanzadas.",
+    tech: [
+      { name: "React", icon: <SiReact className="text-cyan-400" /> },
+      { name: "Tailwind", icon: <SiTailwindcss className="text-teal-400" /> },
+      { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
+      { name: "TensorFlow.js", icon: <SiTensorflow className="text-orange-500" /> }
+    ],
+    github: "https://github.com/AnderFRK/LasuAppWebVisual",
+    demo: "https://anderfrk.github.io/LasuAppWebVisual/",
   },
 ];
