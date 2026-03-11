@@ -4,7 +4,7 @@ import {
   SiLua, SiMysql, SiSqlite, SiMongodb, SiExpress, 
   SiNodedotjs, SiPython, SiAmazons3, SiAwslambda,
   SiHtml5, SiJquery, SiJavascript, SiPandas, SiNumpy, 
-  SiTensorflow, SiGit, SiGithub, SiSupabase
+  SiTensorflow, SiGit, SiGithub, SiSupabase, SiFlutter, SiDart
 } from "react-icons/si";
 import { FaJava, FaAws } from "react-icons/fa"; 
 
@@ -29,8 +29,15 @@ const Skills = () => {
         { name: "Laravel", icon: <SiLaravel className="text-red-500" /> },
         { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
         { name: "Express", icon: <SiExpress className="text-slate-400" /> },
-        { name: "Java", icon: <FaJava className="text-orange-400" /> },
         { name: "Lua (Roblox)", icon: <SiLua className="text-blue-400" /> },
+      ]
+    },
+    {
+      title: "Mobile & Multiplataforma",
+      skills: [
+        { name: "Flutter", icon: <SiFlutter className="text-cyan-400" /> },
+        { name: "Dart", icon: <SiDart className="text-blue-500" /> },
+        { name: "Java (Android)", icon: <FaJava className="text-orange-400" /> },
       ]
     },
     {
@@ -59,7 +66,6 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-20 bg-slate-950 relative overflow-hidden">
-      {/* Línea decorativa superior */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

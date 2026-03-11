@@ -21,7 +21,9 @@ import {
   SiGraphql,
   SiAwslambda,
   SiMysql,
-  SiTensorflow
+  SiTensorflow,
+  SiFlutter,
+  SiDart
 } from "react-icons/si";
 
 export const subProjects = [
@@ -55,6 +57,17 @@ export const subProjects = [
       { name: "CloudFormation", icon: <FiCloud className="text-indigo-400" /> },
     ],
     github: "https://github.com/AnderFRK/VigilaAWS",
+    demo: null,
+  },
+  {
+    id: 2,
+    title: "Calculadora Multiusos Móvil",
+    description: "Aplicación móvil de calculadora multiusos desarrollada para Android/iOS.",
+    tech: [
+      { name: "Flutter", icon: <SiFlutter className="text-cyan-400" /> },
+      { name: "Dart", icon: <SiDart className="text-blue-500" /> },
+    ],
+    github: "https://github.com/AnderFRK/calc-flutter",
     demo: null,
   },
 ];
